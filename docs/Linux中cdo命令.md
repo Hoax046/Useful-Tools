@@ -1,4 +1,9 @@
 ## Linux中cdo命令  
+
+###  安装cdo软件
+```bash
+sudo apt-get install cdo
+```
 ### 时间合并
 ```bash
 cdo  mergetime  gpp_Lmon-MPI*.nc  05gpp_Lmon-MPI-2001-2014.nc
