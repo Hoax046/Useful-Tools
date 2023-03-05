@@ -14,10 +14,14 @@ for i in $(ls) ;do cdo remapbil,r720x361 ${i} 0.5_${i} ;done
 ### 时间切片
 ```bash
 cdo seldate,2000-01-16,2014-12-16 input.nc output.nc
+```
+```bash
 for i in $(ls) ;do cdo seldate,2000-01-16,2014-12-16 input.nc output.nc ;done
 ```
 ### 多模型平均
 ```bash
 cdo ensmean infile1.nc infile2.nc infile3.nc infile4.nc outfile.nc
+```
+```bash
 cdo ensmean infile*.nc outfile.nc
 ```
