@@ -1,21 +1,71 @@
-时间合并
-cdo  mergetime  gpp_Lmon-MPI*.nc  05gpp_Lmon-MPI-2001-2014.nc
+##Linux常用命令
+### Download and unzip
+```bash
+wget http://dags.stanford.edu/data/iccv09Data.tar.gz -O stanford_background.tar.gz
+tar xf stanford_background.tar.gz
+```
+### unzip  
+```bash
+unzip  -d 要解压缩到的文件夹路径 被解压的文件路径
+```
+### Linux下查看文件的大小 (VSCODE中查看传输数据的多少)
+
+```bash
+watch -n 0.1 ls -lh
+```
+### 创建符号链接
+```bash
+ln -s /HOME/scz5158/run/ATL/OpenMMLab/Dataset/cityscapes ./
+```
+### 查看显存占用
+```bash
+watch -n 0.1 nvidia-smi
+```
+### 查看显存进程
+```bash
+fuser -v /dev/nvidia*
+```
+### terminal忽略大小写补全
+编辑 vim ~/.inputrc 
+文件设置 (实测Ubuntu14是   /etc/.inputrc   文件)
+文件末尾添加如下代码:  
+```
+vim ~/.inputrc
+```
+```bash
+# do not show hidden files in the list
+set match-hidden-files off
+ 
+# auto complete ignoring case
+set show-all-if-ambiguous on
+set completion-ignore-case on
+
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+```
+### VSCODE打开图片提示视图错误
+```bash
+#linux
+rm -rf ~/.config/Code/Cache
+
+#windows
+Go to the file explorer and to the path 
+C:\Users\<user_name>\AppData\Roaming\Code 
+and clear the contents of the folders Cache, 
+CachedData, CachedExtensions, CachedExtensionVSIXs 
+(if this folder exists) and Code Cache.
+
+#macos
+~/Library/Application Support/Code/
+```
 
 
-二次线性插值
-cdo remapbil,r720*361 input1.nc output.nc
-
-
-批量插值
-for i in $(ls) ;do cdo remapbil,r720x361 ${i} 0.5_${i} ;done
-
-
-时间切片
-cdo seldate,2000-01-16,2014-12-16 input.nc output.nc
-批量时间切片
-for i in $(ls) ;do cdo seldate,2000-01-16,2014-12-16 input.nc output.nc ;done
-
-
-多模型平均
-cdo ensmean infile1.nc infile2.nc infile3.nc infile4.nc outfile.nc
-cdo ensmean infile*.nc outfile.nc
+参考https://blog.csdn.net/qq_40309341/article/details/121354666
+### ubuntu查看内存使用情况
+```bash
+free -mh 
+```
+### ubuntu查看硬盘使用情况
+```bash
+df -lh
+```
